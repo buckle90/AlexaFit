@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import static com.microsoft.windowsazure.mobileservices.table.query.QueryOperati
  * Created by Jacob on 2/27/2016.
  */
 public class MainActivity extends Activity {
+
 
     /**
      * Mobile Service Client reference
@@ -268,6 +270,10 @@ public class MainActivity extends Activity {
             return task.execute();
         }
     }
+
+
+
+
 
     /**
      * Refresh the list with the items in the Table
