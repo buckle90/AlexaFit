@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,11 +46,12 @@ import static com.microsoft.windowsazure.mobileservices.table.query.QueryOperati
  */
 public class MainActivity extends Activity {
 
-    static private boolean mUser = false;
+    static private boolean mUser = true;
 
     static public void setUser(boolean user) {
         mUser = user;
     }
+
 
     /**
      * Mobile Service Client reference
@@ -60,6 +62,7 @@ public class MainActivity extends Activity {
      * Mobile Service Table used to access data
      */
     private MobileServiceTable<User> mUserTable;
+    private MobileServiceTable<Plan> mPlanTable;
 
     //Offline Sync
     /**
@@ -70,7 +73,7 @@ public class MainActivity extends Activity {
     /**
      * Adapter to sync the items list with the view
      */
-    //private ToDoItemAdapter mAdapter;
+    private PlanAdapter mAdapter;
 
     /**
      * EditText containing the "New To Do" text
@@ -96,37 +99,22 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.main_activity);
 
-        //mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
-
-        // Initialize the progress bar
-       // mProgressBar.setVisibility(ProgressBar.GONE);
-
         try {
-            // Create the Mobile Service Client instance, using the provided
-            // Mobile Service URL and key
             mClient = new MobileServiceClient(
                     "https://testapptodo.azurewebsites.net",
                     this).withFilter(new ProgressFilter());
 
-            // Get the Mobile Service Table instance to use
-
             mUserTable = mClient.getTable(User.class);
+            mPlanTable = mClient.getTable(Plan.class);
 
-            // Offline Sync
-            //mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
-
-            //Init local storage
             initLocalStore().get();
 
-            //mTextNewToDo = (EditText) findViewById(R.id.textNewToDo);
+            mAdapter = new PlanAdapter(this, R.layout.row_list_plan);
+            ListView listViewPlan = (ListView) findViewById(R.id.listViewPlan);
+            listViewPlan.setAdapter(mAdapter);
 
-            // Create an adapter to bind the items with the view
-//            mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
-//            ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
-//            listViewToDo.setAdapter(mAdapter);
-//
-//            // Load the items from the Mobile Service
-//            refreshItemsFromTable();
+            // Load the items from the Mobile Service
+            refreshItemsFromTable();
 
         } catch (MalformedURLException e) {
             createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
@@ -292,48 +280,47 @@ public class MainActivity extends Activity {
     /**
      * Refresh the list with the items in the Table
      */
-//    private void refreshItemsFromTable() {
-//
-//        // Get the items that weren't marked as completed and add them in the
-//        // adapter
-//
-//        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
-//            @Override
-//            protected Void doInBackground(Void... params) {
-//
-//                try {
-//                    final List<ToDoItem> results = refreshItemsFromMobileServiceTable();
-//
-//                    //Offline Sync
-//                    //final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-//
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            mAdapter.clear();
-//
-//                            for (ToDoItem item : results) {
-//                                mAdapter.add(item);
-//                            }
-//                        }
-//                    });
-//                } catch (final Exception e){
-//                    createAndShowDialogFromTask(e, "Error");
-//                }
-//
-//                return null;
-//            }
-//        };
-//
-//        runAsyncTask(task);
-//    }
+    private void refreshItemsFromTable() {
 
-//    /**
-//     * Refresh the list with the items in the Mobile Service Table
-//     */
-//
-//    private List<ToDoItem> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
-//        return mUserTable.where().field("complete").
-//                eq(val(false)).execute().get();
-//    }
+        // Get the items that weren't marked as completed and add them in the
+        // adapter
+
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+
+                try {
+                    final List<Plan> results = refreshItemsFromMobileServiceTable();
+                    Log.d("FARTS", results.toString());
+
+                    //Offline Sync
+                    //final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.clear();
+
+                            for (Plan item : results) {
+                                mAdapter.add(item);
+                            }
+                        }
+                    });
+                } catch (final Exception e){
+                    createAndShowDialogFromTask(e, "Error");
+                }
+
+                return null;
+            }
+        };
+
+        runAsyncTask(task);
+    }
+
+    /**
+     * Refresh the list with the items in the Mobile Service Table
+     */
+    private List<Plan> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
+        return mPlanTable.where().field("userId").eq("Jacob").execute().get();
+    }
 }
