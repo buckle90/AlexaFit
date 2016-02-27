@@ -4,15 +4,140 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.testapptodo.ViewPlanActivity">
+    tools:context="com.example.testapptodo.ViewPlanActivity" >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text=""
         android:id="@+id/planName"
         android:layout_marginTop="32dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pushUpLabel"
+        android:layout_below="@+id/planName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pushUpReps"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/pushUpLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pushUpSets"
+        android:layout_alignTop="@+id/pushUpReps"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sitUpLabel"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/pushUpReps"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sitUpReps"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/sitUpLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sitUpSets"
+        android:layout_alignTop="@+id/sitUpReps"
+        android:layout_alignLeft="@+id/pushUpSets"
+        android:layout_alignStart="@+id/pushUpSets" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/squatLabel"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/sitUpReps"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/squatReps"
+        android:layout_below="@+id/squatLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/squatSets"
+        android:layout_alignBottom="@+id/squatReps"
+        android:layout_alignLeft="@+id/sitUpSets"
+        android:layout_alignStart="@+id/sitUpSets" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/runLabel"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/squatReps"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/runTime"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/runLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/restLabel"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/runTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/restTime"
+        android:layout_alignBottom="@+id/restLabel"
+        android:layout_alignLeft="@+id/squatSets"
+        android:layout_alignStart="@+id/squatSets" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Workout"
+        android:id="@+id/start"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

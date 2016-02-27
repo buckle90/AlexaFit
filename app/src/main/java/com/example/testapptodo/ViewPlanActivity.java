@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.testapptodo.R;
@@ -76,6 +78,7 @@ public class ViewPlanActivity extends Activity {
 
             initLocalStore().get();
 
+            GetPlan(workoutID);
 //            //Plan plan = GetPlan(workoutID).get(0);
 //
 //            EditText nameText = (EditText) findViewById(R.id.name);
@@ -249,6 +252,7 @@ public class ViewPlanActivity extends Activity {
     private void GetPlan(String id) {
         final String idString = id;
 
+
         // Get the items that weren't marked as completed and add them in the
         // adapter
 
@@ -259,10 +263,106 @@ public class ViewPlanActivity extends Activity {
                 try {
 
                     final List<Plan> results = mPlanTable.where().field("id").eq(idString).execute().get();
-                    Plan plan = results.get(0);
-                    Log.d("AHH", plan.getmName());
-                    TextView nameText = (TextView) findViewById(R.id.planName);
-                    nameText.setText("fuckiit");
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Plan plan = results.get(0);
+                            TextView nameText = (TextView) findViewById(R.id.planName);
+                            nameText.setText(plan.getmName());
+
+                            TextView pushUpLabel = (TextView) findViewById(R.id.pushUpLabel);
+                            TextView pushUpReps = (TextView) findViewById(R.id.pushUpReps);
+                            TextView pushUpSets = (TextView) findViewById(R.id.pushUpSets);
+                            if (plan.getmPushUpReps() > 0 && plan.getmPushUpSets() > 0) {
+                                pushUpLabel.setText("Push Ups:");
+                                pushUpReps.setText("Reps: " + Integer.toString(plan.getmPushUpReps()));
+                                pushUpSets.setText("Sets: " + Integer.toString(plan.getmPushUpSets()));
+                            }
+                            else {
+                                ViewGroup.LayoutParams params = pushUpLabel.getLayoutParams();
+                                params.height = 0;
+                                pushUpLabel.setLayoutParams(params);
+                                params = pushUpReps.getLayoutParams();
+                                params.height = 0;
+                                pushUpReps.setLayoutParams(params);
+                                params = pushUpSets.getLayoutParams();
+                                params.height = 0;
+                                pushUpSets.setLayoutParams(params);
+                            }
+
+                            TextView sitUpLabel = (TextView) findViewById(R.id.sitUpLabel);
+                            TextView sitUpReps = (TextView) findViewById(R.id.sitUpReps);
+                            TextView sitUpSets = (TextView) findViewById(R.id.sitUpSets);
+                            if (plan.getmSitUpReps() > 0 && plan.getmSitUpSets() > 0) {
+                                sitUpLabel.setText("Sit Ups:");
+                                sitUpReps.setText("Reps: " + Integer.toString(plan.getmSitUpReps()));
+                                sitUpSets.setText("Sets: " + Integer.toString(plan.getmSitUpSets()));
+                            }
+                            else {
+                                ViewGroup.LayoutParams params = sitUpLabel.getLayoutParams();
+                                params.height = 0;
+                                sitUpLabel.setLayoutParams(params);
+                                params = sitUpReps.getLayoutParams();
+                                params.height = 0;
+                                sitUpReps.setLayoutParams(params);
+                                params = sitUpSets.getLayoutParams();
+                                params.height = 0;
+                                sitUpSets.setLayoutParams(params);
+                            }
+
+                            TextView squatLabel = (TextView) findViewById(R.id.squatLabel);
+                            TextView squatReps = (TextView) findViewById(R.id.squatReps);
+                            TextView squatSets = (TextView) findViewById(R.id.squatSets);
+                            if (plan.getmSquatReps() > 0 && plan.getmSquatSets() > 0) {
+                                squatLabel.setText("Squats:");
+                                squatReps.setText("Reps: " + Integer.toString(plan.getmSquatReps()));
+                                squatSets.setText("Sets: " + Integer.toString(plan.getmSquatSets()));
+                            }
+                            else {
+                                ViewGroup.LayoutParams params = squatLabel.getLayoutParams();
+                                params.height = 0;
+                                squatLabel.setLayoutParams(params);
+                                params = squatReps.getLayoutParams();
+                                params.height = 0;
+                                squatReps.setLayoutParams(params);
+                                params = squatSets.getLayoutParams();
+                                params.height = 0;
+                                squatSets.setLayoutParams(params);
+                            }
+
+                            TextView runLabel = (TextView) findViewById(R.id.runLabel);
+                            TextView runTime = (TextView) findViewById(R.id.runTime);
+                            if (plan.getmRunningTime() > 0) {
+                                runLabel.setText("Running:");
+                                runTime.setText("Time: " + Integer.toString(plan.getmRunningTime()));
+                            }
+                            else {
+                                ViewGroup.LayoutParams params = runLabel.getLayoutParams();
+                                params.height = 0;
+                                runLabel.setLayoutParams(params);
+                                params = runTime.getLayoutParams();
+                                params.height = 0;
+                                runTime.setLayoutParams(params);
+                            }
+
+                            TextView restLabel = (TextView) findViewById(R.id.restLabel);
+                            TextView restTime = (TextView) findViewById(R.id.restTime);
+                            if (plan.getmRestTime() > 0) {
+                                restLabel.setText("Rest:");
+                                restTime.setText("Time: " + Integer.toString(plan.getmRestTime()));
+                            }
+                            else {
+                                ViewGroup.LayoutParams params = restLabel.getLayoutParams();
+                                params.height = 0;
+                                restLabel.setLayoutParams(params);
+                                params = restTime.getLayoutParams();
+                                params.height = 0;
+                                restTime.setLayoutParams(params);
+                            }
+                        }
+                    });
+
 
                 } catch (final Exception e){
                     createAndShowDialogFromTask(e, "Error");
