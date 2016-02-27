@@ -46,7 +46,7 @@ public class SignInActivity extends Activity {
 
     /** Called when the user clicks the Send button */
     public void enteredCredentials(View view) {
-        Intent intent = new Intent(this, HomeScreenActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         EditText emailText = (EditText) findViewById(R.id.EmailText);
         EditText passwordText = (EditText) findViewById(R.id.PasswordText);
 
@@ -55,6 +55,10 @@ public class SignInActivity extends Activity {
 
         String password = passwordText.getText().toString();
         intent.putExtra(EXTRA_PASSWORD, password);
+
+        if(!email.equals("")){
+            MainActivity.setUser(true);
+        }
 
         startActivity(intent);
     }

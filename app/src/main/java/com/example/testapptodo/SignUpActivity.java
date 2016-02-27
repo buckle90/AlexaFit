@@ -50,7 +50,7 @@ public class SignUpActivity extends Activity {
 
     /** Called when the user clicks the Send button */
     public void signUp(View view) {
-        Intent intent = new Intent(this, HomeScreenActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         EditText emailText = (EditText) findViewById(R.id.Email);
         EditText genderText = (EditText) findViewById(R.id.Gender);
         EditText heightText = (EditText) findViewById(R.id.Height);
@@ -75,6 +75,8 @@ public class SignUpActivity extends Activity {
 
         String password = passwordText.getText().toString();
         intent.putExtra(EXTRA_PASSWORD, password);
+
+        MainActivity.setUser(true);
 
         startActivity(intent);
     }

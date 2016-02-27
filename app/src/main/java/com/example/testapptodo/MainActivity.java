@@ -45,6 +45,11 @@ import static com.microsoft.windowsazure.mobileservices.table.query.QueryOperati
  */
 public class MainActivity extends Activity {
 
+    static private boolean mUser = false;
+
+    static public void setUser(boolean user) {
+        mUser = user;
+    }
 
     /**
      * Mobile Service Client reference
@@ -83,6 +88,12 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(mUser == false){
+            Intent intent = new Intent(this, HomeScreenActivity.class);
+            startActivity(intent);
+        }
+
         setContentView(R.layout.main_activity);
 
         //mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
