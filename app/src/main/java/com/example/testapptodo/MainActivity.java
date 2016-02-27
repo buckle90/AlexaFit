@@ -83,14 +83,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
+        //mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
 
         // Initialize the progress bar
-        mProgressBar.setVisibility(ProgressBar.GONE);
+       // mProgressBar.setVisibility(ProgressBar.GONE);
 
         try {
             // Create the Mobile Service Client instance, using the provided
-
             // Mobile Service URL and key
             mClient = new MobileServiceClient(
                     "https://testapptodo.azurewebsites.net",
@@ -129,7 +128,6 @@ public class MainActivity extends Activity {
         public ListenableFuture<ServiceFilterResponse> handleRequest(ServiceFilterRequest request, NextServiceFilterCallback nextServiceFilterCallback) {
 
             final SettableFuture<ServiceFilterResponse> resultFuture = SettableFuture.create();
-
 
             runOnUiThread(new Runnable() {
 
