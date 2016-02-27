@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.testapptodo.R;
 import com.google.common.util.concurrent.FutureCallback;
@@ -246,6 +247,7 @@ public class ViewPlanActivity extends Activity {
      * Refresh the list with the items in the Table
      */
     private void GetPlan(String id) {
+        final String idString = id;
 
         // Get the items that weren't marked as completed and add them in the
         // adapter
@@ -256,11 +258,11 @@ public class ViewPlanActivity extends Activity {
 
                 try {
 
-                    final List<Plan> results = mPlanTable.where().field("id").eq("91d2573e-8eaf-4954-bd41-fb9ffc3d567d").execute().get();
-
+                    final List<Plan> results = mPlanTable.where().field("id").eq(idString).execute().get();
                     Plan plan = results.get(0);
-                    EditText nameText = (EditText) findViewById(R.id.name);
-                    nameText.setText(plan.getmName());
+                    Log.d("AHH", plan.getmName());
+                    TextView nameText = (TextView) findViewById(R.id.planName);
+                    nameText.setText("fuckiit");
 
                 } catch (final Exception e){
                     createAndShowDialogFromTask(e, "Error");
