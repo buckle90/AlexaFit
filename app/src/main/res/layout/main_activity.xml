@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="spartahack.spartahack1.HomeScreenActivity">
+    tools:context="spartahack.spartahack1.HomeScreenActivity"
+    android:background="@drawable/background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,7 +12,8 @@
         android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#ffffffff" />
 
 
     <Button
@@ -23,7 +25,16 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:onClick="createNew"
-        android:entries="@id/textView" />
+        android:entries="@id/textView"
+        android:textColor="#ffffffff"
+        android:paddingTop="25dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="25dp"
+        android:paddingLeft="50dp"
+        android:singleLine="true"
+        android:background="#ff82817a" />
+
+
 
     <ListView
         android:id="@+id/listViewPlan"
@@ -33,7 +44,8 @@
         android:padding="6dip"
         android:layout_below="@+id/createWorkout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp" />
+        android:layout_marginTop="36dp"
+        android:minWidth="200dp" />
 
 </RelativeLayout>
 
