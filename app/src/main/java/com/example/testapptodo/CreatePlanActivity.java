@@ -2,8 +2,14 @@ package com.example.testapptodo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.testapptodo.R;
 
@@ -13,6 +19,30 @@ public class CreatePlanActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
+
+        final Spinner spinner1 = (Spinner)findViewById(R.id.Exercise1);
+        final EditText reps1 = (EditText) findViewById(R.id.reps1);
+        final EditText sets1 = (EditText) findViewById(R.id.sets1);
+        final EditText run1 = (EditText) findViewById(R.id.run1);
+
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                String text = spinner1.getSelectedItem().toString();
+
+                if (text.equals("Run")) {
+                    reps1.setVisibility(View.INVISIBLE);
+                    sets1.setVisibility(View.INVISIBLE);
+                    run1.setVisibility(View.VISIBLE);
+                }
+                else {
+                    reps1.setVisibility(View.VISIBLE);
+                    sets1.setVisibility(View.VISIBLE);
+                    run1.setVisibility(View.INVISIBLE);
+                }
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
 
@@ -37,4 +67,9 @@ public class CreatePlanActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void showRow2(View view) {
+
+    }
+
 }
