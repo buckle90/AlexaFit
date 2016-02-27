@@ -22,7 +22,18 @@
         android:layout_marginTop="71dp"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:onClick="createNew"  />
+        android:onClick="createNew"
+        android:entries="@id/textView" />
+
+    <ListView
+        android:id="@+id/listViewPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/row_list_plan"
+        android:padding="6dip"
+        android:layout_below="@+id/createWorkout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp" />
 
 </RelativeLayout>
 

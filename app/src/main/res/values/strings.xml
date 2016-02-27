@@ -14,8 +14,6 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="button_text">Button Text</string>
     <string name="title_activity_create_plan">CreatePlanActivity</string>
-
-
     <string name="exercise_prompt">Choose an exercise</string>
 
     <string-array name="exercise_arrays">
@@ -24,5 +22,7 @@
         <item>Squats</item>
         <item>Run</item>
     </string-array>
+
+    <string name="title_activity_view_plan">ViewPlanActivity</string>
 
 </resources>

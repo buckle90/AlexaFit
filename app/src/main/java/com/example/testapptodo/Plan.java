@@ -35,9 +35,13 @@ public class Plan {
     @com.google.gson.annotations.SerializedName("userId")
     private String mUserId;
 
+    @com.google.gson.annotations.SerializedName("name")
+    private String mName;
 
-    public Plan(String mId, int mPushUpSets, int mPushUpReps, int mSitUpSets, int mSitUpReps, int mSquatSets, int mSquatReps, int mRunningTime, int mRestTime, String mUserId) {
-        this.mId = mId;
+
+
+
+    public Plan(String mName, int mPushUpSets, int mPushUpReps, int mSitUpSets, int mSitUpReps, int mSquatSets, int mSquatReps, int mRunningTime, int mRestTime, String mUserId) {
         this.mPushUpSets = mPushUpSets;
         this.mPushUpReps = mPushUpReps;
         this.mSitUpSets = mSitUpSets;
@@ -47,8 +51,16 @@ public class Plan {
         this.mRunningTime = mRunningTime;
         this.mRestTime = mRestTime;
         this.mUserId = mUserId;
+        this.mName = mName;
     }
 
+    public Plan() {
+
+    }
+
+    public String getmName() {return mName;}
+
+    public void setmName(String mName) {this.mName = mName;}
 
     public String getmId() {
         return mId;

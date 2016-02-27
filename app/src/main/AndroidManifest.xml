@@ -60,6 +60,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.testapptodo.MainActivity" />
         </activity>
+        <activity
+            android:name=".ViewPlanActivity"
+            android:label="@string/title_activity_view_plan"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.testapptodo.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

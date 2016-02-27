@@ -2,6 +2,8 @@ package com.example.testapptodo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import android.widget.CheckBox;
  * Created by Jacob on 2/27/2016.
  */
 public class PlanAdapter extends ArrayAdapter<Plan> {
+
+    public final static String EXTRA_ID = "PlanAdapter.ID";
+
 
     /**
      * Adapter context
@@ -31,6 +36,8 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
         mLayoutResourceId = layoutResourceId;
     }
 
+
+
     /**
      * Returns the view for a specific item on the list
      */
@@ -40,6 +47,7 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
 
         final Plan currentPlan = getItem(position);
 
+
         if (row == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
             row = inflater.inflate(mLayoutResourceId, parent, false);
@@ -47,22 +55,21 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
 
         row.setTag(currentPlan);
         final Button button = (Button) row.findViewById(R.id.planItem);
-        button.setText(currentPlan.getmId());
+
+        button.setText(currentPlan.getmName());
 
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View arg0) {
-//                if (checkBox.isChecked()) {
-//                    checkBox.setEnabled(false);
-//                    if (mContext instanceof ToDoActivity) {
-//                        ToDoActivity activity = (ToDoActivity) mContext;
-//                        activity.checkItem(currentPlan);
-//                    }
-//                }
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ViewPlanActivity.class);
+                String workoutID = currentPlan.getmId();
+
+                intent.putExtra("dickbutt", workoutID);
+
+                mContext.startActivity(intent);
             }
         });
-
         return row;
     }
 
