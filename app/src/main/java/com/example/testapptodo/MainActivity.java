@@ -111,6 +111,7 @@ public class MainActivity extends Activity {
 
             mAdapter = new PlanAdapter(this, R.layout.row_list_plan);
             ListView listViewPlan = (ListView) findViewById(R.id.listViewPlan);
+            mAdapter.SetActivity(this);
             listViewPlan.setAdapter(mAdapter);
 
             // Load the items from the Mobile Service
@@ -291,7 +292,6 @@ public class MainActivity extends Activity {
 
                 try {
                     final List<Plan> results = refreshItemsFromMobileServiceTable();
-                    Log.d("FARTS", results.toString());
 
                     //Offline Sync
                     //final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
@@ -322,5 +322,11 @@ public class MainActivity extends Activity {
      */
     private List<Plan> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
         return mPlanTable.where().field("userId").eq("Jacob").execute().get();
+    }
+
+    public void ViewPlan(String id) {
+        Intent intent = new Intent(MainActivity.this, ViewPlanActivity.class);
+        intent.putExtra(ViewPlanActivity.EXTRA_ID, id);
+        startActivity(intent);
     }
 }

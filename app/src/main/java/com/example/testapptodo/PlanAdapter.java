@@ -16,8 +16,8 @@ import android.widget.CheckBox;
  */
 public class PlanAdapter extends ArrayAdapter<Plan> {
 
-    public final static String EXTRA_ID = "PlanAdapter.ID";
-
+   // public final static String EXTRA_ID = "PlanAdapter.ID";
+    private MainActivity parentAct;
 
     /**
      * Adapter context
@@ -34,6 +34,10 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
 
         mContext = context;
         mLayoutResourceId = layoutResourceId;
+    }
+
+    public void SetActivity(MainActivity p) {
+        parentAct = p;
     }
 
 
@@ -62,12 +66,12 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, ViewPlanActivity.class);
+
                 String workoutID = currentPlan.getmId();
+                parentAct.ViewPlan(workoutID);
+                //intent.putExtra("dickbutt", workoutID);
 
-                intent.putExtra("dickbutt", workoutID);
-
-                mContext.startActivity(intent);
+               // mContext.startActivity(intent);
             }
         });
         return row;
