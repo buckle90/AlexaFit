@@ -272,7 +272,10 @@ public class MainActivity extends Activity {
     }
 
 
-
+    public void createNew(View view) {
+        Intent intent = new Intent(this, CreatePlanActivity.class);
+        startActivity(intent);
+    }
 
 
     /**

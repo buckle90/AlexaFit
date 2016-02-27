@@ -52,6 +52,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.testapptodo.MainActivity" />
         </activity>
+        <activity
+            android:name=".CreatePlanActivity"
+            android:label="@string/title_activity_create_plan"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.testapptodo.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
