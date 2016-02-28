@@ -134,6 +134,7 @@
         android:layout_height="wrap_content"
         android:text="Start Workout"
         android:id="@+id/start"
+        android:onClick="start"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
