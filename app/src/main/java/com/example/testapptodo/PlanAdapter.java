@@ -62,6 +62,8 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
 
         button.setText(currentPlan.getmName());
 
+        button.setWidth(475);
+
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,9 +71,6 @@ public class PlanAdapter extends ArrayAdapter<Plan> {
 
                 String workoutID = currentPlan.getmId();
                 parentAct.ViewPlan(workoutID);
-                //intent.putExtra("dickbutt", workoutID);
-
-               // mContext.startActivity(intent);
             }
         });
         return row;
