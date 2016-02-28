@@ -4,6 +4,7 @@
     tools:context="spartahack.spartahack1.HomeScreenActivity"
     android:background="@drawable/background">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:textSize="30dp" />
 
 
     <Button
@@ -21,9 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Create Workout"
         android:id="@+id/createWorkout"
-        android:layout_marginTop="71dp"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
         android:onClick="createNew"
         android:entries="@id/textView"
         android:textColor="#ffffffff"
@@ -32,7 +32,9 @@
         android:paddingBottom="25dp"
         android:paddingLeft="50dp"
         android:singleLine="true"
-        android:background="#ff82817a" />
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:background="#ff56ab78" />
 
 
 
@@ -41,11 +43,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/row_list_plan"
-        android:padding="6dip"
+        android:padding="10dip"
+        android:layout_marginTop="50dp"
+        android:minWidth="200dp"
         android:layout_below="@+id/createWorkout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:minWidth="200dp" />
+        android:layout_marginBottom="50dp"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3"
+        android:divider="#ffedebe8"
+        android:dividerHeight="@dimen/yaqeens_margin" />
 
 </RelativeLayout>
 
