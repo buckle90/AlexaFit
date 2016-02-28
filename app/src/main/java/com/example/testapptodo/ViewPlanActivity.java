@@ -376,56 +376,11 @@ public class ViewPlanActivity extends Activity {
     }
 
 
-    /**
-     * Refresh the list with the items in the Table
-     */
-//    private void refreshItemsFromTable() {
-//
-//        // Get the items that weren't marked as completed and add them in the
-//        // adapter
-//
-//        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
-//            @Override
-//            protected Void doInBackground(Void... params) {
-//
-//                try {
-//                    final List<Plan> results = refreshItemsFromMobileServiceTable();
-//                    Log.d("FARTS", results.toString());
-//
-//                    //Offline Sync
-//                    //final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-//
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            mAdapter.clear();
-//
-//                            for (Plan item : results) {
-//                                mAdapter.add(item);
-//                            }
-//                        }
-//                    });
-//                } catch (final Exception e){
-//                    createAndShowDialogFromTask(e, "Error");
-//                }
-//
-//                return null;
-//            }
-//        };
-//
-//        runAsyncTask(task);
-//    }
-
-    /**
-     * Refresh the list with the items in the Mobile Service Table
-     */
-//    private List<Plan> GetPlan(String id) throws ExecutionException, InterruptedException {
-//
-////        return mToDoTable.where().field("complete").
-////                eq(val(false)).execute().get();
-//
-//        List<Plan> res = mPlanTable.where().field("id")
-//                .eq("91d2573e-8eaf-4954-bd41-fb9ffc3d567d").execute().get();
-//        return res;
+//    public void start() {
+//        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .enableAutoManage(this /* FragmentActivity */,
+//                        this /* OnConnectionFailedListener */)
+//                .addApi(Wearable.API)
+//                .build();
 //    }
 }
